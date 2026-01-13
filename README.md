@@ -61,7 +61,8 @@ Open in browser:
 http://127.0.0.1:5500
 ```
 
-Features
+---
+*Features*
 
 Uncertainty-aware predictions
 
@@ -71,7 +72,9 @@ Minimal and transparent UI
 
 Honest handling of ambiguous cases
 
-License
+---
+
+*License*
 
 This project is released for academic and non-commercial use.
 
