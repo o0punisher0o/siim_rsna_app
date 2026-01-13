@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chest X-ray AI Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+  <h1>Chest X-ray AI (Research Demo)</h1>
+
+  <div class="card">
+    <input type="file" @change="onFileChange" accept="image/*" />
+    <button :disabled="!file || loading" @click="analyze">
+      {{ loading ? "Analyzing..." : "Analyze" }}
+    </button>
+  </div>
+
+  <div v-if="result" class="card">
+    <span class="badge" :class="result.predicted_class">
+      {{ result.predicted_class.toUpperCase() }}
+    </span>
+
+    <p><b>Confidence:</b> {{ (result.confidence * 100).toFixed(1) }}%</p>
+
+    <p class="explanation">
+      {{ explanationText }}
+    </p>
+
+    <div class="images">
+      <div>
+        <h4>Original</h4>
+        <img :src="originalPreview" />
+      </div>
+
+      <div v-if="result.gradcam">
+        <h4>Grad-CAM</h4>
+        <img :src="'data:image/png;base64,' + result.gradcam" />
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    This tool is for research and educational purposes only.
+  </footer>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

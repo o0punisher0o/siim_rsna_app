@@ -1,0 +1,7 @@
+python-multipart
+opencv-python
+tensorflow
+numpy
+pillow
+pydantic
+fastapi
